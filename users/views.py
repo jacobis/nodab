@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, render
@@ -12,11 +14,12 @@ def index(request):
 def users(request, name):
     try:
         user = User.objects.get(name=name)
-        name = name
     except:
         user_info = fetch_user_info(name)
-        context = user_info
+        user = User.objects.create(**user_info)
     
+    context = {'user': user}
+
     return render(request, 'users.html', context)
     
 

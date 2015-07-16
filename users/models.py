@@ -13,7 +13,8 @@ class User(models.Model):
     server = models.CharField(max_length=2, choices=SERVERS, default=SCANIA)
     rank = models.IntegerField()
     trophy = models.IntegerField()
-    refresh_time = models.DateTimeField()
+    image = models.URLField(blank=True)
+    refresh_time = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "User"
