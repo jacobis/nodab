@@ -27,6 +27,8 @@ class User(models.Model):
 class Boss(models.Model):
     m_id = models.CharField(max_length=30)
     name = models.CharField(max_length=100)
+    level = models.IntegerField()
+    image = models.URLField(blank=True)
 
     class Meta:
         verbose_name = "Boss"
