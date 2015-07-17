@@ -1,0 +1,38 @@
+[
+    {
+        "model": "users.boss",
+        "pk": 1,
+        "fields": {
+            "m_id": "23000039",
+            "name": "해모칸",
+            "level": 28
+        }
+    },
+    {
+        "model": "users.boss",
+        "pk": 2,
+        "fields": {
+            "m_id": "23000100",
+            "name": "최후의바야르",
+            "level": 30
+        }
+    },
+    {
+        "model": "users.boss",
+        "pk": 3,
+        "fields": {
+            "m_id": "23000055",
+            "name": "마크52 베타",
+            "level": 30
+        }
+    },
+    {
+        "model": "users.boss",
+        "pk": 4,
+        "fields": {
+            "m_id": "23000007",
+            "name": "그림자술사 데보라크",
+            "level": 30
+        }
+    }
+]
