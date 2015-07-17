@@ -14,8 +14,10 @@ class Migration(migrations.Migration):
             name='Boss',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('m_id', models.CharField(max_length=30)),
+                ('m_id', models.CharField(unique=True, max_length=30)),
                 ('name', models.CharField(max_length=100)),
+                ('level', models.IntegerField()),
+                ('image', models.URLField(blank=True)),
             ],
             options={
                 'verbose_name': 'Boss',
@@ -30,7 +32,8 @@ class Migration(migrations.Migration):
                 ('server', models.CharField(default=b'SC', max_length=2, choices=[(b'SC', b'Scania')])),
                 ('rank', models.IntegerField()),
                 ('trophy', models.IntegerField()),
-                ('refresh_time', models.DateTimeField()),
+                ('image', models.URLField(blank=True)),
+                ('refresh_time', models.DateTimeField(auto_now=True)),
             ],
             options={
                 'verbose_name': 'User',
@@ -41,8 +44,11 @@ class Migration(migrations.Migration):
             name='UserBoss',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('defeat', models.IntegerField()),
+                ('party_id', models.CharField(max_length=100)),
+                ('name', models.CharField(max_length=30)),
+                ('rank', models.IntegerField()),
                 ('elapse_time', models.TimeField()),
+                ('defeat_time', models.DateTimeField()),
                 ('boss_id', models.ForeignKey(to='users.Boss')),
                 ('user_id', models.ForeignKey(to='users.User')),
             ],
@@ -50,5 +56,13 @@ class Migration(migrations.Migration):
                 'verbose_name': 'UserBoss',
                 'verbose_name_plural': 'UserBosses',
             },
+        ),
+        migrations.AlterUniqueTogether(
+            name='user',
+            unique_together=set([('name', 'server')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='userboss',
+            unique_together=set([('name', 'party_id')]),
         ),
     ]
