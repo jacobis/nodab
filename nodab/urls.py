@@ -22,5 +22,5 @@ from users import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^users/(?P<name>\w+)', views.users, name='users')
+    url(r'^crawl_users/(?P<from_the_beginning>\w+)', views.users, name='crawl_users')
 ]
