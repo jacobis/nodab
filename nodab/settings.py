@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'djcelery',
     'users',
 )
 
@@ -110,3 +111,11 @@ STATIC_URL = '/static/'
 FIXTURE_DIRS = (
         os.path.join(BASE_DIR, 'fixtures'),
     )
+
+
+# Celery Configurations
+
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+CELERY_RESULT_BACKEND = 'amqp://guest:guest@localhost:5672//'
+CELERY_IMPORTS = ('users.tasks',)
+CELERY_ALWAYS_EAGER = False
