@@ -30,6 +30,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=30)),
                 ('server', models.CharField(default=b'SC', max_length=2, choices=[(b'SC', b'Scania')])),
+                ('u_class', models.CharField(blank=True, max_length=2, choices=[(b'HE', b'Heavygunner'), (b'PR', b'Priest'), (b'WI', b'Wizard'), (b'BE', b'Berserker'), (b'AS', b'Assassin'), (b'TH', b'Thief'), (b'KN', b'Knight'), (b'RA', b'Ranger')])),
                 ('rank', models.IntegerField()),
                 ('trophy', models.IntegerField()),
                 ('image', models.URLField(blank=True)),
@@ -45,7 +46,6 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('party_id', models.CharField(max_length=100)),
-                ('name', models.CharField(max_length=30)),
                 ('rank', models.IntegerField()),
                 ('elapse_time', models.TimeField()),
                 ('defeat_time', models.DateTimeField()),
@@ -63,6 +63,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='userboss',
-            unique_together=set([('name', 'party_id')]),
+            unique_together=set([('user_id', 'boss_id', 'party_id')]),
         ),
     ]
